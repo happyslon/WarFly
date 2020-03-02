@@ -12,6 +12,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    let sceneManager = SceneManager.shared
+    
     let hud = HUD()
     
     let shot = YellowShot()
@@ -26,6 +28,10 @@ class GameScene: SKScene {
 
     
     override func didMove(to view: SKView) {
+        
+        // checking if scene persists
+        guard sceneManager.gameScene == nil else {return}
+        sceneManager.gameScene = self
         
         physicsWorld.contactDelegate = self
         physicsWorld.gravity = CGVector.zero

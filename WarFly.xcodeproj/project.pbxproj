@@ -32,6 +32,7 @@
 		058CEC9E2406F37C008071F5 /* BluePowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058CEC9D2406F37C008071F5 /* BluePowerUp.swift */; };
 		058CECA02406F3A8008071F5 /* BluePowerUp.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 058CEC9F2406F3A8008071F5 /* BluePowerUp.atlas */; };
 		058CECA22406F415008071F5 /* GreenPowerUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058CECA12406F415008071F5 /* GreenPowerUp.swift */; };
+		058FA23B240DA4ED0013CD33 /* SceneManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 058FA23A240DA4ED0013CD33 /* SceneManager.swift */; };
 		0594D6C924068CE800C55286 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594D6C824068CE800C55286 /* Enemy.swift */; };
 		0594D6CB24068D3100C55286 /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0594D6CA24068D3100C55286 /* Enemy_1.atlas */; };
 		0594D6CD2406A59F00C55286 /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0594D6CC2406A59F00C55286 /* Enemy_2.atlas */; };
@@ -67,6 +68,7 @@
 		058CEC9D2406F37C008071F5 /* BluePowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BluePowerUp.swift; sourceTree = "<group>"; };
 		058CEC9F2406F3A8008071F5 /* BluePowerUp.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = BluePowerUp.atlas; sourceTree = "<group>"; };
 		058CECA12406F415008071F5 /* GreenPowerUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreenPowerUp.swift; sourceTree = "<group>"; };
+		058FA23A240DA4ED0013CD33 /* SceneManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneManager.swift; sourceTree = "<group>"; };
 		0594D6C824068CE800C55286 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		0594D6CA24068D3100C55286 /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		0594D6CC2406A59F00C55286 /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			children = (
 				054472342407F45200D25A4C /* Assets.swift */,
 				0544723824084EB200D25A4C /* BitMaskCategory.swift */,
+				058FA23A240DA4ED0013CD33 /* SceneManager.swift */,
 			);
 			path = Managers;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 				0594D6C924068CE800C55286 /* Enemy.swift in Sources */,
 				058CECA22406F415008071F5 /* GreenPowerUp.swift in Sources */,
 				056B103D2401BE9D003B2547 /* Island.swift in Sources */,
+				058FA23B240DA4ED0013CD33 /* SceneManager.swift in Sources */,
 				056417052405BE5400F06588 /* PowerUp.swift in Sources */,
 				0544723924084EB200D25A4C /* BitMaskCategory.swift in Sources */,
 				054472372408254900D25A4C /* MenuScene.swift in Sources */,
