@@ -36,6 +36,11 @@
 		0594D6C924068CE800C55286 /* Enemy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0594D6C824068CE800C55286 /* Enemy.swift */; };
 		0594D6CB24068D3100C55286 /* Enemy_1.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0594D6CA24068D3100C55286 /* Enemy_1.atlas */; };
 		0594D6CD2406A59F00C55286 /* Enemy_2.atlas in Resources */ = {isa = PBXBuildFile; fileRef = 0594D6CC2406A59F00C55286 /* Enemy_2.atlas */; };
+		059BCDD4240EE77600D11412 /* ParentScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059BCDD3240EE77600D11412 /* ParentScene.swift */; };
+		059BCDD6240EED1100D11412 /* OptionsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059BCDD5240EED1100D11412 /* OptionsScene.swift */; };
+		059BCDD8240EF1FB00D11412 /* BestScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 059BCDD7240EF1FB00D11412 /* BestScene.swift */; };
+		059BCDDB240F08F600D11412 /* EnemyExplosion.sks in Resources */ = {isa = PBXBuildFile; fileRef = 059BCDD9240F08F600D11412 /* EnemyExplosion.sks */; };
+		059BCDDC240F08F600D11412 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 059BCDDA240F08F600D11412 /* Assets.xcassets */; };
 		05BF8B3F240A6F8A00CA826E /* ButtonNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF8B3E240A6F8A00CA826E /* ButtonNode.swift */; };
 		05BF8B41240A812000CA826E /* PauseScence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 05BF8B40240A812000CA826E /* PauseScence.swift */; };
 /* End PBXBuildFile section */
@@ -72,6 +77,11 @@
 		0594D6C824068CE800C55286 /* Enemy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enemy.swift; sourceTree = "<group>"; };
 		0594D6CA24068D3100C55286 /* Enemy_1.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_1.atlas; sourceTree = "<group>"; };
 		0594D6CC2406A59F00C55286 /* Enemy_2.atlas */ = {isa = PBXFileReference; lastKnownFileType = folder.skatlas; path = Enemy_2.atlas; sourceTree = "<group>"; };
+		059BCDD3240EE77600D11412 /* ParentScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ParentScene.swift; sourceTree = "<group>"; };
+		059BCDD5240EED1100D11412 /* OptionsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsScene.swift; sourceTree = "<group>"; };
+		059BCDD7240EF1FB00D11412 /* BestScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BestScene.swift; sourceTree = "<group>"; };
+		059BCDD9240F08F600D11412 /* EnemyExplosion.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = EnemyExplosion.sks; sourceTree = "<group>"; };
+		059BCDDA240F08F600D11412 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		05BF8B3E240A6F8A00CA826E /* ButtonNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonNode.swift; sourceTree = "<group>"; };
 		05BF8B40240A812000CA826E /* PauseScence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PauseScence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -119,6 +129,7 @@
 		056B10212401ADD1003B2547 /* WarFly */ = {
 			isa = PBXGroup;
 			children = (
+				059BCDDD240F092E00D11412 /* Particles */,
 				0544722D2407BA5300D25A4C /* Atlases */,
 				05BF8B3D240A6B1000CA826E /* Scenes */,
 				05BF8B3C240A6AD900CA826E /* Managers */,
@@ -126,8 +137,17 @@
 				05BF8B39240A69AF00CA826E /* Controllers */,
 				05BF8B38240A679700CA826E /* Supporting files */,
 				05BF8B3B240A6AB000CA826E /* Classes */,
+				059BCDDA240F08F600D11412 /* Assets.xcassets */,
 			);
 			path = WarFly;
+			sourceTree = "<group>";
+		};
+		059BCDDD240F092E00D11412 /* Particles */ = {
+			isa = PBXGroup;
+			children = (
+				059BCDD9240F08F600D11412 /* EnemyExplosion.sks */,
+			);
+			path = Particles;
 			sourceTree = "<group>";
 		};
 		05BF8B38240A679700CA826E /* Supporting files */ = {
@@ -194,6 +214,9 @@
 				056B10282401ADD1003B2547 /* GameScene.swift */,
 				054472362408254900D25A4C /* MenuScene.swift */,
 				05BF8B40240A812000CA826E /* PauseScence.swift */,
+				059BCDD3240EE77600D11412 /* ParentScene.swift */,
+				059BCDD5240EED1100D11412 /* OptionsScene.swift */,
+				059BCDD7240EF1FB00D11412 /* BestScene.swift */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -258,10 +281,12 @@
 			files = (
 				0594D6CD2406A59F00C55286 /* Enemy_2.atlas in Resources */,
 				0594D6CB24068D3100C55286 /* Enemy_1.atlas in Resources */,
+				059BCDDC240F08F600D11412 /* Assets.xcassets in Resources */,
 				056B102E2401ADD1003B2547 /* Main.storyboard in Resources */,
 				0544722C2407B9D200D25A4C /* YellowAmmo.atlas in Resources */,
 				056417082405C53800F06588 /* GreenPowerUp.atlas in Resources */,
 				056B10452401CD60003B2547 /* PlayerPlane.atlas in Resources */,
+				059BCDDB240F08F600D11412 /* EnemyExplosion.sks in Resources */,
 				056B10302401ADD3003B2547 /* Assets.xcassets in Resources */,
 				058CECA02406F3A8008071F5 /* BluePowerUp.atlas in Resources */,
 				056B10332401ADD3003B2547 /* LaunchScreen.storyboard in Resources */,
@@ -280,6 +305,7 @@
 				056B10432401CAFB003B2547 /* PlayerPlane.swift in Sources */,
 				050A988B2409A0AB00C815E1 /* HUD.swift in Sources */,
 				056B10292401ADD1003B2547 /* GameScene.swift in Sources */,
+				059BCDD8240EF1FB00D11412 /* BestScene.swift in Sources */,
 				056B103F2401C4DE003B2547 /* Cloud.swift in Sources */,
 				05BF8B41240A812000CA826E /* PauseScence.swift in Sources */,
 				058CEC9E2406F37C008071F5 /* BluePowerUp.swift in Sources */,
@@ -296,7 +322,9 @@
 				0544723924084EB200D25A4C /* BitMaskCategory.swift in Sources */,
 				054472372408254900D25A4C /* MenuScene.swift in Sources */,
 				0544722F2407BB4B00D25A4C /* Shot.swift in Sources */,
+				059BCDD4240EE77600D11412 /* ParentScene.swift in Sources */,
 				056B103B2401B13D003B2547 /* Background.swift in Sources */,
+				059BCDD6240EED1100D11412 /* OptionsScene.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
