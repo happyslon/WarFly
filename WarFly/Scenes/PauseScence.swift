@@ -8,22 +8,27 @@
 
 import SpriteKit
 
-class PauseScence: SKScene {
+class PauseScence: ParentScene {
     
-    let sceneManager = SceneManager.shared
+   // let sceneManager = SceneManager.shared //перенесли в ParentScene
     
     override func didMove(to view: SKView) {
         
-        
-        self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
+       //перенесли
+      //  self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
         
         //           let texture = SKTexture(imageNamed: "header1")
         //           let header = SKSpriteNode(texture: texture)
-        let header = ButtonNode(titled: "pause", backgroundName: "header_background")
-        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 250)
-        //header.name = "runButton"
-        self.addChild(header)
+        
+        // перенесли в ParentScene
+        
+//        let header = ButtonNode(titled: "pause", backgroundName: "header_background")
+//        header.position = CGPoint(x: self.frame.midX, y: self.frame.midY + 250)
+//        //header.name = "runButton"
+//        self.addChild(header)
+        setHeader(withName: "pause", andBackground: "header_background")
+        
         
         let button1 = ButtonNode(titled: "restart", backgroundName: "button_background")
         button1.position = CGPoint(x: self.frame.midX, y: self.frame.midY - 100)
@@ -46,6 +51,14 @@ class PauseScence: SKScene {
         
     }
     
+    override func update(_ currentTime: TimeInterval) {
+        if let gameScene = sceneManager.gameScene {
+            if !gameScene.isPaused {
+                gameScene.isPaused = true
+            }
+        }
+    }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         guard let location = touches.first?.location(in: self) else { return  }
         let node = self.atPoint(location)
@@ -66,6 +79,13 @@ class PauseScence: SKScene {
             guard let gameScene = sceneManager.gameScene else {return}
             gameScene.scaleMode = .aspectFill
             self.scene?.view?.presentScene(gameScene, transition: transition)
+            
+        }else if node.name == "options" {
+            let transition = SKTransition.crossFade(withDuration: 1.0)
+            let optionsScene = OptionsScene(size: self.size)
+            optionsScene.backScene = self
+            optionsScene.scaleMode = .aspectFill
+            self.scene?.view?.presentScene(optionsScene, transition: transition)
             
         }
     }

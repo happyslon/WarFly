@@ -10,9 +10,9 @@ import SpriteKit
 import GameplayKit
 
 
-class GameScene: SKScene {
+class GameScene: ParentScene {
     
-    let sceneManager = SceneManager.shared
+   // let sceneManager = SceneManager.shared //перенесли в ParentScene
     
     let hud = HUD()
     
@@ -25,9 +25,40 @@ class GameScene: SKScene {
     let screen = UIScreen.main.bounds
     
     let screenSize = UIScreen.main.bounds.size
+    
+    var lives = 3 {
+        didSet {
+            switch lives {
+            case 3:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = false
+            case 2:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = false
+                hud.life3.isHidden = true
+            case 1:
+                hud.life1.isHidden = false
+                hud.life2.isHidden = true
+                hud.life3.isHidden = true
+            default:
+                break
+            }
+        }
+    }
+    
+    var pauseNode = SKNode() // нужно поставить на паузу какойто один элемент
+    /*
+     создаем Node и добавляем в него нужный элемент (которым хотим управлять)
+     */
 
     
     override func didMove(to view: SKView) {
+        
+        //добавляем нод на сцену
+        //addChild(pauseNode)
+        
+        self.scene?.isPaused = false
         
         // checking if scene persists
         guard sceneManager.gameScene == nil else {return}
@@ -108,6 +139,7 @@ class GameScene: SKScene {
             powerUp.startMovement()
             //powerUp.performRotation()
             powerUp.position = CGPoint(x: CGFloat(randomPositionX), y: self.size.height + 100)
+            //self.pauseNode.addChild(powerUp) // добавлем нужный(для управления "пауза") элемент в pauseNode
             self.addChild(powerUp)
         }
         
@@ -263,9 +295,17 @@ class GameScene: SKScene {
         let node = self.atPoint(location)
       //  if node.name == "runButton" {
         if node.name == "pause" {
+            
+            //и в конце нужно поставить на паузу нужный нам pauseNode
+            //pauseNode.isPaused = true
+            
             let transition = SKTransition.doorway(withDuration: 1.0)//crossFade(withDuration: 1.0)
             let pauseScene = PauseScence(size: self.size)
             pauseScene.scaleMode = .aspectFill
+            //пауза
+            sceneManager.gameScene = self //сохраним сцену
+            scene?.isPaused = true
+            
             self.scene?.view?.presentScene(pauseScene, transition: transition)
             
         }
@@ -275,14 +315,53 @@ class GameScene: SKScene {
 extension GameScene: SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         
+        let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
+        let contactPoint = contact.contactPoint
+        explosion?.position = contactPoint
+        explosion?.zPosition = 25
+        let waitExplosionAction = SKAction.wait(forDuration: 1.0)
+        
+        
+        
+        
         let contactCategory: BitMaskCategory = [contact.bodyA.category, contact.bodyB.category]
         
         switch contactCategory {
-        case [.enemy, .player]: break
+            
+        case [.enemy, .player]:
+            if contact.bodyA.node?.name == "sprite" {
+                
+                if contact.bodyA.node?.parent != nil {
+                    contact.bodyA.node?.removeFromParent()
+                    lives -= 1
+                }
+                
+                
+            }else{
+                
+                if contact.bodyB.node?.parent != nil {
+                    contact.bodyB.node?.removeFromParent()
+                    lives -= 1
+                }
+                
+                
+            }
+            addChild(explosion!)
+            self.run(waitExplosionAction) {
+                explosion?.removeFromParent()
+            }
             //print("1")
         case [.player, .powerUp]: break
            //print("2")
-        case [.shot, .enemy]: break
+        case [.shot, .enemy]:
+            contact.bodyA.node?.removeFromParent()
+            contact.bodyB.node?.removeFromParent()
+            
+            addChild(explosion!)
+             self.run(waitExplosionAction) {
+                 explosion?.removeFromParent()
+             }
+            
             //print("3")
         default: break
             //print("!!!!!")
