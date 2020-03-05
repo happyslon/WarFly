@@ -13,6 +13,7 @@ class BluePowerUP: PowerUp{
     init(){
         let textureAtlas = Assets.shared.bluePowerUpAtlas//SKTextureAtlas(named: "BluePowerUp")
         super.init(textureAtlas: textureAtlas)
+        name = "bluePowerUP"
     }
     
     required init?(coder aDecoder: NSCoder) {

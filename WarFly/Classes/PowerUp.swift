@@ -26,7 +26,7 @@ class PowerUp: SKSpriteNode {
         textureNameBeginsWith = String(textureName.dropLast(6)) //   откидываем в названии 01.png
         super.init(texture: texture,color: .clear, size: initialSize)
         self.setScale(0.5)
-        self.name = "powerUp"
+     //   self.name = "powerUp"
         self.zPosition = 20
         
         self.physicsBody = SKPhysicsBody(texture: texture, alphaThreshold: 0.5, size: self.size)
