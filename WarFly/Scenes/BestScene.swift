@@ -10,11 +10,14 @@ import SpriteKit
 
 class BestScene: ParentScene {
     
-    var places = [10, 100, 1000]
-    
+    var places: [Int]!   //[10, 100, 1000]
+    //var places = [10]
     
     override func didMove(to view: SKView) {
         
+        gameSetting.loadScores()
+        places = gameSetting.highscore
+        print("gameSetting.highscore")
         // перенесли в родительский класс
         //self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
@@ -27,16 +30,19 @@ class BestScene: ParentScene {
         button3.label.name = "back"
         addChild(button3)
         
-        let topPlaces = places.sorted{ $0 > $1 }.prefix(3)
+        //let topPlaces = places.sorted{ $0 > $1 }.prefix(3)
         
-        for (index, value) in topPlaces.enumerated(){
-           
-            let l = SKLabelNode(text: value.description)
-            l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
-            l.fontName = "AmericanTypewriter-Bold"
-            l.fontSize = 30
-            l.position = CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(index * 60))
-            addChild(l)
+        //for (index, value) in topPlaces.enumerated(){
+        for (index, value) in places.enumerated(){
+            if value != 0 {
+                let l = SKLabelNode(text: value.description)
+                l.fontColor = UIColor(red: 219 / 255, green: 226 / 255, blue: 215 / 255, alpha: 1.0)
+                l.fontName = "AmericanTypewriter-Bold"
+                l.fontSize = 30
+                l.position = CGPoint(x: self.frame.midX, y: self.frame.midY - CGFloat(index * 60))
+                addChild(l)
+            }
+
         }
         
     }
