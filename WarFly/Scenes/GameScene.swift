@@ -12,6 +12,8 @@ import GameplayKit
 
 class GameScene: ParentScene {
     
+    var backgroundMusic: SKAudioNode!
+    
     // let sceneManager = SceneManager.shared //перенесли в ParentScene
     
     let hud = HUD()
@@ -54,6 +56,20 @@ class GameScene: ParentScene {
     
     
     override func didMove(to view: SKView) {
+        
+        gameSetting.loadGameSettings()
+        
+        if gameSetting.isMusic && backgroundMusic == nil {
+            
+            if let musicURL = Bundle.main.url(forResource: "backgroundMusic", withExtension: "m4a"){
+                backgroundMusic = SKAudioNode(url: musicURL)
+                addChild(backgroundMusic)
+            }
+            
+        }
+        
+
+        
         
         //добавляем нод на сцену
         //addChild(pauseNode)
@@ -362,6 +378,12 @@ extension GameScene: SKPhysicsContactDelegate {
             }
             
             if lives == 0{
+                
+                print("lives == 0")
+                print(lives)
+                gameSetting.currentScore = hud.score
+                gameSetting.saveScores()
+                
                 let gameOverScence = GameOverScene(size: self.size)
                 let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
                 gameOverScence.scaleMode = .aspectFill
@@ -408,6 +430,11 @@ extension GameScene: SKPhysicsContactDelegate {
                 
                 contact.bodyA.node?.removeFromParent()
                 contact.bodyB.node?.removeFromParent()
+                
+                if gameSetting.isSound{
+                   self.run(SKAction.playSoundFileNamed("hitSound", waitForCompletion: false))
+                }
+                
                 
                 addChild(explosion!)
                 
