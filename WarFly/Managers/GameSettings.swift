@@ -29,7 +29,7 @@ class GameSettings {
     }
     
     func saveScores(){
-        print(currentScore)
+        
         highscore.append(currentScore)
         highscore = Array(highscore.sorted{ $0 > $1}.prefix(3))
         
@@ -42,7 +42,7 @@ class GameSettings {
         
         guard ud.value(forKey: highscoreKey) != nil else {return}
         highscore = ud.array(forKey: highscoreKey) as! [Int]
-        print(highscore)
+        
     }
     
     func saveGameSettings(){

@@ -17,7 +17,7 @@ class BestScene: ParentScene {
         
         gameSetting.loadScores()
         places = gameSetting.highscore
-        print("gameSetting.highscore")
+        
         // перенесли в родительский класс
         //self.backgroundColor = SKColor(red: 0.15, green: 0.15, blue: 0.3, alpha: 1.0)
         
