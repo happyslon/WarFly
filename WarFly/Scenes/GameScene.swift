@@ -339,6 +339,8 @@ class GameScene: ParentScene {
     
 }
 extension GameScene: SKPhysicsContactDelegate {
+    
+    
     func didBegin(_ contact: SKPhysicsContact) {
         
         let explosion = SKEmitterNode(fileNamed: "EnemyExplosion")
@@ -355,11 +357,13 @@ extension GameScene: SKPhysicsContactDelegate {
         switch contactCategory {
             
         case [.enemy, .player]:
+            
             if contact.bodyA.node?.name == "sprite" {
                 
                 if contact.bodyA.node?.parent != nil {
                     contact.bodyA.node?.removeFromParent()
                     lives -= 1
+                    overGameScores()
                 }
                 
                 
@@ -368,27 +372,28 @@ extension GameScene: SKPhysicsContactDelegate {
                 if contact.bodyB.node?.parent != nil {
                     contact.bodyB.node?.removeFromParent()
                     lives -= 1
+                    overGameScores()
                 }
                 
                 
             }
+   
             addChild(explosion!)
+            
             self.run(waitExplosionAction) {
                 explosion?.removeFromParent()
             }
             
-            if lives == 0{
-                
-                print("lives == 0")
-                print(lives)
-                gameSetting.currentScore = hud.score
-                gameSetting.saveScores()
-                
-                let gameOverScence = GameOverScene(size: self.size)
-                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
-                gameOverScence.scaleMode = .aspectFill
-                self.scene?.view?.presentScene(gameOverScence, transition: transition)
-            }
+//            if lives == 0 {
+//
+//                gameSetting.currentScore = hud.score
+//                gameSetting.saveScores()
+//
+//                let gameOverScence = GameOverScene(size: self.size)
+//                let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+//                gameOverScence.scaleMode = .aspectFill
+//                self.scene?.view?.presentScene(gameOverScence, transition: transition)
+//            }
             
         //print("1")
         case [.player, .powerUp]:
@@ -427,6 +432,7 @@ extension GameScene: SKPhysicsContactDelegate {
             if contact.bodyA.node?.parent != nil {
                 
                 hud.score += 5
+                
                 
                 contact.bodyA.node?.removeFromParent()
                 contact.bodyB.node?.removeFromParent()
@@ -472,4 +478,19 @@ extension GameScene: SKPhysicsContactDelegate {
     func didEnd(_ contact: SKPhysicsContact) {
         
     }
+    
+    func overGameScores(){
+        
+        if lives == 0 {
+              
+              gameSetting.currentScore = hud.score
+              gameSetting.saveScores()
+              
+              let gameOverScence = GameOverScene(size: self.size)
+              let transition = SKTransition.doorsCloseVertical(withDuration: 1.0)
+              gameOverScence.scaleMode = .aspectFill
+              self.scene?.view?.presentScene(gameOverScence, transition: transition)
+          }
+    }
+    
 }

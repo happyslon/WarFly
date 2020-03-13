@@ -10,9 +10,10 @@ import SpriteKit
 
 class GameOverScene: ParentScene {
     
-        
+
         override func didMove(to view: SKView) {
             
+      
             setHeader(withName: "game over", andBackground: "header_background")
             
             
